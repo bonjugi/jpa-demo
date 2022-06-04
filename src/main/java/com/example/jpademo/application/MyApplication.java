@@ -31,7 +31,7 @@ public class MyApplication {
     log.info("registrations 시작");
     registrationRepository.findAll().forEach(x -> {
       log.info("registration : {} ", x);
-      log.info("students : {} ", x.getStudent());
+      log.info("students : {} ", x.getStudentId());
     });
     log.info("registrations 종료");
   }

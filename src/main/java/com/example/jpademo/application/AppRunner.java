@@ -27,9 +27,9 @@ public class AppRunner implements ApplicationRunner {
     Student std2 = studentRepository.save(new Student("s2"));
     Student std3 = studentRepository.save(new Student("s3"));
 
-    registrationRepository.save(new Registration(std1, "r1"));
-    registrationRepository.save(new Registration(std2, "r2"));
-    registrationRepository.save(new Registration(std3, "r3"));
+    registrationRepository.save(new Registration(std1.getId(), "r1"));
+    registrationRepository.save(new Registration(std2.getId(), "r2"));
+    registrationRepository.save(new Registration(std3.getId(), "r3"));
 
   }
 }

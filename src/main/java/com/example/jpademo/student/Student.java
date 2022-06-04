@@ -6,7 +6,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +25,15 @@ public class Student {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @OneToOne(mappedBy = "student", fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinTable(name = "registration",
+      joinColumns = {@JoinColumn(name = "student_id", referencedColumnName = "id")},
+      inverseJoinColumns = {@JoinColumn(
+          name = "student_id",
+          referencedColumnName = "id",
+          insertable = false,
+          updatable = false)}
+  )
   private Registration registration;
 
   private String name;
